@@ -38,27 +38,28 @@ public class StarWarsHeap {
         long fim = new Date().getTime();
 
         long execucao = fim - inicio;
-        Arq.openWrite("mat_selecao.txt");
+        Arq.openWrite("650625_selecao.txt");
 
-        Arq.print("mat\t" + execucao + "\t" + Characters.movimentacoes + "\t");
+        Arq.print("650625\t" + execucao + "\t" + Characters.movimentacoes + "\t");
 
         Arq.close();
 
         // printar o array ordenado
         for (int i = 0; i < enterNumber; i++) {
            // MyIO.print("[" + i + "] ## ");
-            
-           MyIO.print("## ");
-            // personagem[i].readCharacter();
-            MyIO.print(character[i].getName() + " ## ");
-            MyIO.print(character[i].getHeight() + " ## ");
-            MyIO.print(character[i].getWeight() + " ## ");
-            MyIO.print(character[i].getHairColor() + " ## ");
-            MyIO.print(character[i].getSkinColor() + " ## ");
-            MyIO.print(character[i].getEyeColor() + " ## ");
-            MyIO.print(character[i].getBirthYear() + " ## ");
-            MyIO.print(character[i].getGenre() + " ## ");
-            MyIO.println(character[i].getHomeWorld() + " ## ");
+            if(character[i].getName().compareTo("") != 0){
+                MyIO.print("## ");
+                // personagem[i].readCharacter();
+                MyIO.print(character[i].getName() + " ## ");
+                MyIO.print(character[i].getHeight() + " ## ");
+                MyIO.print(character[i].getWeight() + " ## ");
+                MyIO.print(character[i].getHairColor() + " ## ");
+                MyIO.print(character[i].getSkinColor() + " ## ");
+                MyIO.print(character[i].getEyeColor() + " ## ");
+                MyIO.print(character[i].getBirthYear() + " ## ");
+                MyIO.print(character[i].getGenre() + " ## ");
+                MyIO.println(character[i].getHomeWorld() + " ## ");
+            }
         }
 
     }
@@ -117,7 +118,7 @@ public class StarWarsHeap {
     public static void constroi(Characters[] array, int tam){
       
         // compareTo retorna um numero positivo se o objeto é "maior" que o parâmetro
-        for (int i = tam; i > 1 &&  array[i/2].getHeight().compareTo(array[i].getHeight()) <= 0; i /= 2){
+        for (int i = tam; i > 1 &&  Integer.parseInt(array[i/2].getHeight()) <= Integer.parseInt(array[i].getHeight()); i /= 2){
             Characters.movimentei();
             swap(array, i, i/2);
         }
@@ -132,7 +133,7 @@ public class StarWarsHeap {
             // versao identica pra contar operações
             Characters.movimentei();
             // se o objeto precede o parâmetro
-            if (array[i].getHeight().compareTo(array[filho].getHeight()) < 0)  {
+            if (Integer.parseInt(array[i].getHeight()) < Integer.parseInt(array[filho].getHeight()))  {
                 swap(array, i, filho);
                 i = filho;
             } 
@@ -145,7 +146,7 @@ public class StarWarsHeap {
     public static int getMaiorFilho(Characters[] array, int i, int tam){
         int filho;
         Characters.movimentei();
-        if (2*i == tam || array[2*i].getHeight().compareTo(array[2*i+ 1].getHeight()) > 0)  {
+        if (2*i == tam || Integer.parseInt(array[2*i].getHeight()) > Integer.parseInt(array[2*i+ 1].getHeight()))  {
             filho = 2*i;
         } 
         else {
@@ -260,7 +261,7 @@ class Characters {
     Characters() {
         this.fileName = "";
         this.name = "";
-        this.height = "";
+        this.height = "0";
         this.weight = "";
         this.skinColor = "";
         this.hairColor = "";

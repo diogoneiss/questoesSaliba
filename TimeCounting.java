@@ -25,8 +25,29 @@ class TimeCounting {
 
     public static void main(String[] args) throws Exception {
 
+        String[] input = new String[700];
+        int enterNumber = 0;
+        String line;
+
+        // MyIO.setCharset("UTF-8");
+
+        // Leitura de dados
+        do {
+            input[enterNumber] = MyIO.readLine();
+            input[enterNumber] = ISO88591toUTF8(input[enterNumber]);
+
+        } while (isFIM(input[enterNumber++]) == false);
+        enterNumber--;
+        // Criacao de array de objetos
+        Characters[] characters = new Characters[enterNumber];
+
+        for (int i = 0; i < enterNumber; i++) {
+            characters[i] = new Characters();
+            characters[i].readFile(input[i]);
+        }
+
         long inicio = new Date().getTime();
-        MyIO.setCharset("UTF-8");
+      
 
         String[] entradas = new String[1000];
         int quantidadeDeFrases = 0;

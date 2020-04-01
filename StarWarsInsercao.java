@@ -38,27 +38,28 @@ public class StarWarsInsercao {
         long fim = new Date().getTime();
 
         long execucao = fim - inicio;
-        Arq.openWrite("mat_selecao.txt");
+        Arq.openWrite("650625_selecao.txt");
 
-        Arq.print("mat\t" + execucao + "\t" + Characters.movimentacoes + "\t");
+        Arq.print("650625\t" + execucao + "\t" + Characters.movimentacoes + "\t");
 
         Arq.close();
 
         // printar o array ordenado
         for (int i = 0; i < enterNumber; i++) {
            // MyIO.print("[" + i + "] ## ");
-            
-           MyIO.print("## ");
-            // personagem[i].readCharacter();
-            MyIO.print(character[i].getName() + " ## ");
-            MyIO.print(character[i].getHeight() + " ## ");
-            MyIO.print(character[i].getWeight() + " ## ");
-            MyIO.print(character[i].getHairColor() + " ## ");
-            MyIO.print(character[i].getSkinColor() + " ## ");
-            MyIO.print(character[i].getEyeColor() + " ## ");
-            MyIO.print(character[i].getBirthYear() + " ## ");
-            MyIO.print(character[i].getGenre() + " ## ");
-            MyIO.println(character[i].getHomeWorld() + " ## ");
+           if(character[i].getName().compareTo("") != 0){
+            MyIO.print("## ");
+                // personagem[i].readCharacter();
+                MyIO.print(character[i].getName() + " ## ");
+                MyIO.print(character[i].getHeight() + " ## ");
+                MyIO.print(character[i].getWeight() + " ## ");
+                MyIO.print(character[i].getHairColor() + " ## ");
+                MyIO.print(character[i].getSkinColor() + " ## ");
+                MyIO.print(character[i].getEyeColor() + " ## ");
+                MyIO.print(character[i].getBirthYear() + " ## ");
+                MyIO.print(character[i].getGenre() + " ## ");
+                MyIO.println(character[i].getHomeWorld() + " ## ");
+            }
         }
 
     }
