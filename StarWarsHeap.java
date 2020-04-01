@@ -38,7 +38,7 @@ public class StarWarsHeap {
         long fim = new Date().getTime();
 
         long execucao = fim - inicio;
-        Arq.openWrite("650625_selecao.txt");
+        Arq.openWrite("650625_heapsort.txt");
 
         Arq.print("650625\t" + execucao + "\t" + Characters.movimentacoes + "\t");
 
